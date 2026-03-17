@@ -18,3 +18,4 @@ SNOWFLAKE_SCHEMA = "RAW"
 # Pipeline
 VS_CURRENCY = "usd"
 PER_PAGE = 250
+MAX_PAGES = 2  # Pro testování, můžete zvýšit pro produkci

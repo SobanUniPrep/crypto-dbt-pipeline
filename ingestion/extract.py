@@ -1,8 +1,8 @@
 import requests
 import logging
+import time
 from ingestion import config
 
-# Logging setup
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -23,11 +23,11 @@ def extract_all_coins() -> list:
     while True:
         logger.info(f"Fetching page {page}")
         coins = fetch_coins(page, config.PER_PAGE, config.VS_CURRENCY)
-        if len(coins) < config.PER_PAGE:
-            all_coins.extend(coins)
-            break
         all_coins.extend(coins)
+        if len(coins) < config.PER_PAGE or page >= config.MAX_PAGES:
+            break
         page += 1
+        time.sleep(5)
     logger.info(f"Total coins extracted: {len(all_coins)}")
     return all_coins
 
