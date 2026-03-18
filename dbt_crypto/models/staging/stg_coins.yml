@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_coins
+    description: "Cleaned and typed coin data from CoinGecko"
+    columns:
+      - name: coin_id
+        description: "Unique coin identifier"
+        tests:
+          - unique
+          - not_null
+
+      - name: coin_symbol
+        tests:
+          - not_null
+
+      - name: coin_name
+        tests:
+          - not_null
+
+      - name: current_price_usd
+        tests:
+          - not_null
+
+      - name: market_cap_rank
+        tests:
+          - not_null
+
+      - name: last_updated_at
+        tests:
+          - not_null

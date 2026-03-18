@@ -1,0 +1,15 @@
+coin_id,category,is_stablecoin
+bitcoin,layer1,false
+ethereum,layer1,false
+tether,stablecoin,true
+usd-coin,stablecoin,true
+dai,stablecoin,true
+solana,layer1,false
+ripple,layer1,false
+binancecoin,exchange,false
+uniswap,defi,false
+aave,defi,false
+chainlink,defi,false
+cardano,layer1,false
+avalanche-2,layer1,false
+polkadot,layer1,false

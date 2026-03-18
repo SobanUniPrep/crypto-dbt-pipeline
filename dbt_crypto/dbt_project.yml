@@ -40,3 +40,6 @@ models:
     vault:
       +materialized: table
       +schema: VAULT
+seeds:
+  dbt_crypto:
+      +schema: STAGING
