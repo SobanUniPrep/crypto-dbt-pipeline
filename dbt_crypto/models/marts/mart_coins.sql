@@ -12,7 +12,19 @@ with source as (
     {% if is_incremental() %}
         where last_updated_at > (select max(last_updated_at) from {{ this }})
     {% endif %}
-)
-// this one possibly as macro? reuse in vault
+),
 
-select * from source
+categories as (
+    select * from {{ ref('coin_categories') }}
+),
+
+final as (
+    select
+        s.*,
+        coalesce(c.category, 'other')        as category,
+        coalesce(c.is_stablecoin, false)      as is_stablecoin
+    from source s
+    left join categories c using (coin_id)
+)
+
+select * from final
